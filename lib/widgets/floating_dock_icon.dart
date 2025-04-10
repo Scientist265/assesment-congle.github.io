@@ -29,7 +29,7 @@ class FloatingDockIcon extends StatelessWidget {
             BoxShadow(
               color: Colors.black.withOpacity(0.3),
               blurRadius: 10,
-              offset: const Offset(0, 5),
+              offset: const Offset(0, -0.1),
             ),
           ],
         ),

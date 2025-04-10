@@ -1,5 +1,4 @@
 import 'package:draggable_square_dock_view/constants/sizing.dart';
-
 import '/export.dart';
 
 class WelcomePage extends StatelessWidget {
