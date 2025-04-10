@@ -1,7 +1,4 @@
-import 'package:draggable_square_dock_view/config/router.dart';
-import 'package:draggable_square_dock_view/config/routes.dart';
-import 'package:draggable_square_dock_view/core/ui/welcome_page.dart';
-import 'package:flutter/material.dart';
+import '/export.dart';
 
 class App extends StatelessWidget {
   const App({super.key});

@@ -1,7 +1,8 @@
-import 'package:draggable_square_dock_view/config/router.dart';
 import 'package:draggable_square_dock_view/constants/sizing.dart';
+import 'package:draggable_square_dock_view/core/ui/dock_screen.dart';
 import 'package:draggable_square_dock_view/core/ui/moving_square.dart';
-import 'package:flutter/material.dart';
+
+import '/export.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -33,7 +34,7 @@ class WelcomePage extends StatelessWidget {
             20.ht,
             ElevatedButton(
               onPressed: () {
-                pushNamed('/home');
+                pushNamed(DockScreen.routeName);
               },
               child: const Text('Movable Dock'),
             ),

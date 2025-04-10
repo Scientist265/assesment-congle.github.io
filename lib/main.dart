@@ -1,5 +1,4 @@
 import 'package:draggable_square_dock_view/app.dart';
-
 import 'package:flutter/material.dart';
 
 void main() {
