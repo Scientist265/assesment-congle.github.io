@@ -9,7 +9,7 @@ class SquareWidget extends StatelessWidget {
       width: 70,
       height: 70,
       decoration: BoxDecoration(
-        color: Colors.blue,
+        color: Colors.red,
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
