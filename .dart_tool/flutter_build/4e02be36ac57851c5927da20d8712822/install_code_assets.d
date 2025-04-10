@@ -1,0 +1,1 @@
+ /Users/scientist/StudioProjects/draggable_square_dock_view/.dart_tool/flutter_build/4e02be36ac57851c5927da20d8712822/native_assets.json: 
