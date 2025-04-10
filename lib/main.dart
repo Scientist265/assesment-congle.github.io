@@ -1,4 +1,4 @@
-import 'package:draggable_square_dock_view/core/ui/home_page.dart';
+import 'package:draggable_square_dock_view/app.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,10 +10,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const HomePage(),
-    );
+    return App();
   }
 }

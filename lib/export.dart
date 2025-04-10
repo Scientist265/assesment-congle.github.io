@@ -1,0 +1,11 @@
+export 'package:draggable_square_dock_view/struct/dock_item.dart';
+export 'package:draggable_square_dock_view/widgets/dock_container.dart';
+export 'package:draggable_square_dock_view/widgets/dock_icon.dart';
+export 'package:draggable_square_dock_view/widgets/floating_dock_icon.dart';
+export 'package:draggable_square_dock_view/config/router.dart';
+export 'package:draggable_square_dock_view/config/routes.dart';
+export 'package:draggable_square_dock_view/core/ui/welcome_page.dart';
+export 'package:draggable_square_dock_view/config/error_screen.dart';
+export 'package:draggable_square_dock_view/core/ui/dock_screen.dart';
+export 'package:draggable_square_dock_view/core/ui/moving_square.dart';
+export 'package:flutter/material.dart';
