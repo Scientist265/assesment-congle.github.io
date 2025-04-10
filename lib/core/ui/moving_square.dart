@@ -1,3 +1,4 @@
+import 'package:draggable_square_dock_view/config/router.dart';
 import 'package:draggable_square_dock_view/constants/enums.dart';
 import 'package:draggable_square_dock_view/widgets/movement_button.dart';
 import 'package:draggable_square_dock_view/widgets/square_widget.dart';
@@ -28,9 +29,16 @@ class _MovingSquareScreenState extends State<MovingSquareScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 30),
+        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 50),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              child: Icon(Icons.arrow_back_ios, color: Colors.white),
+            ),
             Expanded(
               child: Center(
                 child: AnimatedBuilder(

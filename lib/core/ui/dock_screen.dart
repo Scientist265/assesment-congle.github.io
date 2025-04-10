@@ -77,72 +77,89 @@ class _DockScreenState extends State<DockScreen> with TickerProviderStateMixin {
     final screenWidth = MediaQuery.of(context).size.width;
     final dockWidth = screenWidth;
 
-    return Scaffold(
-      backgroundColor: Colors.grey[900],
-      body: Stack(
-        children: [
-          if (floatingIconPosition != null && floatingIconIndex != null)
-            FloatingDockIcon(
-              item: dockItems[floatingIconIndex!],
-              position: floatingIconPosition!,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.grey[900],
+        body: Stack(
+          children: [
+            if (floatingIconPosition != null && floatingIconIndex != null)
+              FloatingDockIcon(
+                item: dockItems[floatingIconIndex!],
+                position: floatingIconPosition!,
+              ),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Icon(Icons.arrow_back_ios, color: Colors.white),
+                ),
+              ),
             ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: DockContainer(
-              width: dockWidth,
-              children: List.generate(dockItems.length, (index) {
-                return DragTarget<int>(
-                  onWillAcceptWithDetails: (details) => details.data != index,
-                  onAcceptWithDetails:
-                      (details) => _handleItemAccept(details.data, index),
-                  builder: (context, candidateData, rejectedData) {
-                    return LongPressDraggable<int>(
-                      data: index,
-                      feedback: Material(
-                        color: Colors.transparent,
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: DockContainer(
+                width: dockWidth,
+                children: List.generate(dockItems.length, (index) {
+                  return DragTarget<int>(
+                    onWillAcceptWithDetails: (details) => details.data != index,
+                    onAcceptWithDetails:
+                        (details) => _handleItemAccept(details.data, index),
+                    builder: (context, candidateData, rejectedData) {
+                      return LongPressDraggable<int>(
+                        data: index,
+                        feedback: Material(
+                          color: Colors.transparent,
+                          child: DockIcon(
+                            item: dockItems[index],
+                            isHovered: false,
+                            isDragging: true,
+                            scale: 1.0,
+                            offset: 0.0,
+                            onEnter: () {},
+                            onExit: () {},
+                          ),
+                        ),
+                        childWhenDragging: const SizedBox(
+                          width: 60,
+                          height: 110,
+                        ),
+                        onDragStarted: () {
+                          setState(() {
+                            draggedIndex = index;
+                            hoveredIndex = null;
+                          });
+                        },
+                        onDragUpdate:
+                            (details) => _handleItemDragUpdate(index, details),
+                        onDragEnd: (_) => _handleItemDragEnd(),
                         child: DockIcon(
                           item: dockItems[index],
-                          isHovered: false,
-                          isDragging: true,
-                          scale: 1.0,
-                          offset: 0.0,
-                          onEnter: () {},
-                          onExit: () {},
+                          isHovered:
+                              hoveredIndex == index && draggedIndex != index,
+                          isDragging: false,
+                          scale:
+                              hoveredIndex == index && draggedIndex != index
+                                  ? 1.0 + bounceController.value * 0.3
+                                  : 1.0,
+                          offset:
+                              hoveredIndex == index && draggedIndex != index
+                                  ? -20.0 * bounceController.value
+                                  : 0.0,
+                          onEnter: () => _handleItemHover(index, true),
+                          onExit: () => _handleItemHover(index, false),
                         ),
-                      ),
-                      childWhenDragging: const SizedBox(width: 60, height: 110),
-                      onDragStarted: () {
-                        setState(() {
-                          draggedIndex = index;
-                          hoveredIndex = null;
-                        });
-                      },
-                      onDragUpdate:
-                          (details) => _handleItemDragUpdate(index, details),
-                      onDragEnd: (_) => _handleItemDragEnd(),
-                      child: DockIcon(
-                        item: dockItems[index],
-                        isHovered:
-                            hoveredIndex == index && draggedIndex != index,
-                        isDragging: false,
-                        scale:
-                            hoveredIndex == index && draggedIndex != index
-                                ? 1.0 + bounceController.value * 0.3
-                                : 1.0,
-                        offset:
-                            hoveredIndex == index && draggedIndex != index
-                                ? -20.0 * bounceController.value
-                                : 0.0,
-                        onEnter: () => _handleItemHover(index, true),
-                        onExit: () => _handleItemHover(index, false),
-                      ),
-                    );
-                  },
-                );
-              }),
+                      );
+                    },
+                  );
+                }),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
