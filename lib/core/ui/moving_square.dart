@@ -1,4 +1,3 @@
-import 'package:draggable_square_dock_view/config/router.dart';
 import 'package:draggable_square_dock_view/constants/enums.dart';
 import 'package:draggable_square_dock_view/widgets/movement_button.dart';
 import 'package:draggable_square_dock_view/widgets/square_widget.dart';

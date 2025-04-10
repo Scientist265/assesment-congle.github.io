@@ -1,6 +1,4 @@
 import 'package:draggable_square_dock_view/constants/sizing.dart';
-import 'package:draggable_square_dock_view/core/ui/dock_screen.dart';
-import 'package:draggable_square_dock_view/core/ui/moving_square.dart';
 
 import '/export.dart';
 
